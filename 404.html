@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Coordinate Offline | Minhas Innovations</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .error-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-primary);
+    }
+
+    .error-card {
+      background: var(--glass-bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      padding: 60px 40px;
+      border-radius: 24px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 240, 255, 0.05);
+      position: relative;
+      z-index: 2;
+    }
+
+    .error-code {
+      font-size: 6rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.2));
+    }
+
+    .error-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+
+    .error-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 35px;
+    }
+
+    .error-btn {
+      padding: 14px 32px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Glowing Orbs -->
+  <div class="glow-orb orb-1" aria-hidden="true" style="top: 20%; right: 10%;"></div>
+  <div class="glow-orb orb-2" aria-hidden="true" style="bottom: 10%; left: 10%;"></div>
+
+  <div class="error-container">
+    <div class="error-card">
+      <div class="error-code">404</div>
+      <h1 class="error-title">System Node Offline</h1>
+      <p class="error-desc">
+        The digital coordinate you requested does not exist or has been shifted in the matrix. Let's redirect you back
+        to the main node.
+      </p>
+      <a href="index.html" class="btn-primary error-btn">
+        <i class="fa-solid fa-house"></i> Return to Base
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>
