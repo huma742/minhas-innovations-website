@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dots.forEach(dot => {
         dot.y += dot.speedY;
         if (dot.y < 0) dot.y = lHeight;
-        lCtx.fillStyle = `rgba(0, 240, 255, ${dot.opacity})`;
+        lCtx.fillStyle = `rgba(196, 99, 58, ${dot.opacity})`;
         lCtx.beginPath();
         lCtx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         lCtx.fill();
@@ -123,6 +123,29 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.setAttribute('aria-expanded', 'false');
         const icon = navToggle.querySelector('i');
         if (icon) icon.className = 'fa-solid fa-bars';
+      }
+    });
+  });
+
+  // Active nav link highlight on scroll (Scroll Spy)
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.scrollY + 180; // offset for nav height
+
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = sec.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      if (href === `#${current}`) {
+        link.classList.add('active');
       }
     });
   });
@@ -212,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       draw() {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+        ctx.fillStyle = 'rgba(196, 99, 58, 0.4)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -236,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (distance < 100) {
             let opacity = (100 - distance) / 100 * 0.15;
-            ctx.strokeStyle = `rgba(171, 38, 255, ${opacity})`;
+            ctx.strokeStyle = `rgba(35, 33, 61, ${opacity})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -301,8 +324,8 @@ document.addEventListener('DOMContentLoaded', () => {
       points.push(newVal);
 
       const gradient = ctx.createLinearGradient(0, 0, 0, h);
-      gradient.addColorStop(0, 'rgba(0, 240, 255, 0.3)');
-      gradient.addColorStop(1, 'rgba(171, 38, 255, 0.0)');
+      gradient.addColorStop(0, 'rgba(196, 99, 58, 0.3)');
+      gradient.addColorStop(1, 'rgba(35, 33, 61, 0.0)');
       
       ctx.beginPath();
       ctx.moveTo(0, h);
@@ -321,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 1; i < points.length; i++) {
         ctx.lineTo(i * segmentWidth, points[i]);
       }
-      ctx.strokeStyle = 'var(--accent-cyan)';
+      ctx.strokeStyle = 'var(--accent-primary)';
       ctx.lineWidth = 1.5;
       ctx.stroke();
     }
@@ -417,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.clearRect(0, 0, width, height);
       
       satellites.forEach(sat => {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.strokeStyle = 'rgba(30, 27, 58, 0.12)';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(centerNode.x, centerNode.y);
@@ -430,9 +453,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const pulseX = centerNode.x + (sat.x - centerNode.x) * sat.pulseProgress;
         const pulseY = centerNode.y + (sat.y - centerNode.y) * sat.pulseProgress;
 
-        ctx.fillStyle = 'var(--accent-cyan)';
+        ctx.fillStyle = 'var(--accent-primary)';
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'var(--accent-cyan)';
+        ctx.shadowColor = 'var(--accent-primary)';
         ctx.beginPath();
         ctx.arc(pulseX, pulseY, 3, 0, Math.PI * 2);
         ctx.fill();
